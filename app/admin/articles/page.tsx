@@ -1,49 +1,46 @@
-'use client';
+import { supabaseServer } from "@/lib/supabaseServer";
 
-import { useEffect, useState } from 'react';
+export default async function AdminArticlesListPage() {
+  const supabase = supabaseServer;
 
-export default function ArticlesList() {
-  const [articles, setArticles] = useState([]);
+  const { data: articles, error } = await supabase
+    .from("articles")
+    .select("*")
+    .order("id", { ascending: false });
 
-  useEffect(() => {
-    fetch('/api/articles')
-      .then(res => res.json())
-      .then(data => setArticles(data));
-  }, []);
+  if (error) {
+    return <p>Σφάλμα κατά τη φόρτωση των άρθρων.</p>;
+  }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Articles</h1>
+    <main className="p-10">
+      <h1 className="text-4xl font-bold mb-6">📚 Λίστα Άρθρων</h1>
 
-      <table border="1" cellPadding="8" style={{ marginTop: '20px', width: '100%' }}>
-        <thead>
-          <tr>
-            <th>Τίτλος</th>
-            <th>Ημερομηνία</th>
-            <th>Ώρα</th>
-            <th>Κατηγορία</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <a
+        href="/admin/articles/new"
+        className="p-3 mb-6 inline-block rounded bg-black text-white hover:opacity-80"
+      >
+        ➕ Νέο Άρθρο
+      </a>
 
-        <tbody>
-          {articles.map(article => (
-            <tr key={article.id}>
-              <td>{article.title}</td>
-              <td>{article.created_at.split('T')[0]}</td>
-              <td>{article.created_at.split('T')[1].slice(0,5)}</td>
-              <td>{article.category}</td>
-              <td>{article.status}</td>
-              <td>
-                <a href={`/admin/articles/${article.id}`}>View</a> |{' '}
-                <a href={`/admin/articles/${article.id}/edit`}>Edit</a> |{' '}
-                <button>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <div className="flex flex-col gap-4">
+        {articles.length === 0 && (
+          <p className="text-zinc-600">Δεν υπάρχουν άρθρα ακόμα.</p>
+        )}
+
+        {articles.map((article) => (
+          <a
+            key={article.id}
+            href={`/admin/articles/${article.id}/edit`}
+            className="p-4 border rounded-lg bg-white hover:bg-zinc-100 transition"
+          >
+            <h2 className="text-xl font-semibold">{article.title}</h2>
+            <p className="text-sm text-zinc-600">
+              Γλώσσα: {article.language} — Κατηγορία: {article.category}
+            </p>
+          </a>
+        ))}
+      </div>
+    </main>
   );
 }

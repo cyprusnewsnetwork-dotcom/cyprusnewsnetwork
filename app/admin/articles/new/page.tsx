@@ -2,13 +2,18 @@
 
 import { useState } from "react";
 
-export default function EditForm({ article }) {
-  const [form, setForm] = useState(article);
+export default function NewArticlePage() {
+  const [form, setForm] = useState({
+    title: "",
+    content: "",
+    category: "",
+    language: "",
+  });
 
-  async function updateArticle(e) {
+  async function createArticle(e) {
     e.preventDefault();
 
-    const res = await fetch(`/api/articles/${form.id}/update`, {
+    const res = await fetch("/api/articles/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -17,18 +22,18 @@ export default function EditForm({ article }) {
     const data = await res.json();
 
     if (data.success) {
-      alert("Το άρθρο ενημερώθηκε!");
-      window.location.href = `/admin/articles/${form.id}`;
+      alert("Το άρθρο δημιουργήθηκε!");
+      window.location.href = `/admin/articles/${data.id}`;
     } else {
-      alert("Σφάλμα κατά την ενημέρωση.");
+      alert("Σφάλμα κατά τη δημιουργία.");
     }
   }
 
   return (
     <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">✏️ Επεξεργασία Άρθρου</h1>
+      <h1 className="text-3xl font-bold mb-6">📝 Νέο Άρθρο</h1>
 
-      <form onSubmit={updateArticle} className="flex flex-col gap-4 max-w-xl">
+      <form onSubmit={createArticle} className="flex flex-col gap-4 max-w-xl">
 
         <label>
           Τίτλος:
@@ -70,7 +75,7 @@ export default function EditForm({ article }) {
           type="submit"
           className="p-3 bg-black text-white rounded hover:opacity-80"
         >
-          💾 Αποθήκευση
+          ➕ Δημιουργία Άρθρου
         </button>
 
       </form>
