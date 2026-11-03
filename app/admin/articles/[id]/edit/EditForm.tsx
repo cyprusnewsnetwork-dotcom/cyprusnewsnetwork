@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-export default function EditForm({ article }) {
+export default function EditForm({ article }: { article: any }) {
   const [form, setForm] = useState(article);
 
-  async function updateArticle(e) {
+  async function updateArticle(e: any) {
     e.preventDefault();
 
     const res = await fetch(`/api/articles/${form.id}/update`, {

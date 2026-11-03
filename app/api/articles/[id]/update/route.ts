@@ -1,7 +1,10 @@
 import { supabaseServer } from "@/lib/supabaseServer";
 import { NextResponse } from "next/server";
 
-export async function POST(req, { params }) {
+export async function POST(
+  req: any,
+  { params }: { params: any }
+) {
   const { id } = params;
   const body = await req.json();
 
