@@ -22,7 +22,9 @@ export async function POST(req: Request) {
     // Helper: OpenAI call
     // -----------------------------
     async function translate(text: string, target: string) {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      const response = await fetch(
+  "https://api.openai.com/v1/chat/completions",
+  {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

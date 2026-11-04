@@ -23,7 +23,9 @@ export async function POST(req: Request) {
       );
     }
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch(
+  "https://api.openai.com/v1/chat/completions",
+  {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,6 +47,8 @@ export async function POST(req: Request) {
     });
 
     const data = await response.json();
+    
+    console.log("OPENAI RESPONSE:", JSON.stringify(data, null, 2));
 
     if (!data?.choices?.[0]?.message?.content) {
       return NextResponse.json(
