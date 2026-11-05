@@ -28,9 +28,18 @@ export default async function IncomingArticlesPage() {
           {articles?.map((article: any) => (
             <tr key={article.id}>
               <td>{article.source}</td>
-              <td>{article.title}</td>
+
+              <td>
+                <a href={"/admin/incoming/" + article.id}>
+                  {article.title}
+                </a>
+              </td>
+
               <td>{article.status}</td>
-              <td>{article.published_at || "-"}</td>
+
+              <td>
+                {article.published_at || "-"}
+              </td>
             </tr>
           ))}
         </tbody>
