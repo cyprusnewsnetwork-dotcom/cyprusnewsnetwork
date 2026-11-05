@@ -36,8 +36,7 @@ export default async function IncomingArticlePage({
       </p>
 
       <p>
-        <strong>Published:</strong>{" "}
-        {article.published_at || "-"}
+        <strong>Published:</strong> {article.published_at || "-"}
       </p>
 
       <p>
@@ -46,6 +45,44 @@ export default async function IncomingArticlePage({
           {article.url}
         </a>
       </p>
+
+      <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+        <form
+          action={`/api/incoming/${id}/approve`}
+          method="POST"
+          style={{ display: "inline-block", marginRight: "10px" }}
+        >
+          <button type="submit">
+            APPROVE
+          </button>
+        </form>
+
+        <form
+          action={`/api/incoming/${id}/reject`}
+          method="POST"
+          style={{ display: "inline-block", marginRight: "10px" }}
+        >
+          <button type="submit">
+            REJECT
+          </button>
+        </form>
+
+        <form
+          action={`/api/incoming/${id}/create-article`}
+          method="POST"
+          style={{ display: "inline-block", marginRight: "10px" }}
+        >
+          <button type="submit">
+            CREATE ARTICLE
+          </button>
+        </form>
+
+        <a href="/admin/articles">
+          <button>
+            GO TO ARTICLES
+          </button>
+        </a>
+      </div>
 
       <hr />
 
