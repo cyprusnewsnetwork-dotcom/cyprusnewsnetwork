@@ -18,6 +18,7 @@ export default async function IncomingArticlesPage() {
         <thead>
           <tr>
             <th>Source</th>
+            <th>Topic</th>
             <th>Title</th>
             <th>Status</th>
             <th>Published</th>
@@ -28,6 +29,8 @@ export default async function IncomingArticlesPage() {
           {articles?.map((article: any) => (
             <tr key={article.id}>
               <td>{article.source}</td>
+
+              <td>{article.topic || "OTHER"}</td>
 
               <td>
                 <a href={"/admin/incoming/" + article.id}>
