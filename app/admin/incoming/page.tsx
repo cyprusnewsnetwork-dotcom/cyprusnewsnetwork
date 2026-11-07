@@ -1,5 +1,7 @@
 import { supabaseServer } from "@/lib/supabaseServer";
 
+export const dynamic = "force-dynamic";
+
 export default async function IncomingArticlesPage() {
   const { data: articles, error } = await supabaseServer
     .from("incoming_articles")
@@ -12,7 +14,7 @@ export default async function IncomingArticlesPage() {
 
   return (
     <div>
-      <h1>Incoming Articles</h1>
+      <h1>Incoming Articles ({articles?.length || 0})</h1>
 
       <table border={1}>
         <thead>
@@ -22,6 +24,7 @@ export default async function IncomingArticlesPage() {
             <th>Title</th>
             <th>Status</th>
             <th>Published</th>
+            <th>Collected</th>
           </tr>
         </thead>
 
@@ -42,6 +45,10 @@ export default async function IncomingArticlesPage() {
 
               <td>
                 {article.published_at || "-"}
+              </td>
+
+              <td>
+                {article.created_at || "-"}
               </td>
             </tr>
           ))}
