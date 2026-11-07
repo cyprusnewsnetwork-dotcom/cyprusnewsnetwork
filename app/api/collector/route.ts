@@ -24,7 +24,14 @@ const KEYWORDS = [
   "white house",
 
   "republican",
-  "democrat"
+  "democrat",
+
+  "gas",
+  "oil",
+  "energy",
+  "gazprom",
+  "sanctions",
+  "nato"
 ];
 
 function detectTopic(text: string) {
@@ -33,7 +40,8 @@ function detectTopic(text: string) {
   if (
     t.includes("putin") ||
     t.includes("lavrov") ||
-    t.includes("kremlin")
+    t.includes("kremlin") ||
+    t.includes("moscow")
   ) {
     return "PUTIN";
   }
@@ -55,6 +63,15 @@ function detectTopic(text: string) {
   }
 
   if (
+    t.includes("gas") ||
+    t.includes("oil") ||
+    t.includes("energy") ||
+    t.includes("gazprom")
+  ) {
+    return "ENERGY";
+  }
+
+  if (
     t.includes("election") ||
     t.includes("white house") ||
     t.includes("republican") ||
@@ -66,69 +83,103 @@ function detectTopic(text: string) {
   return "OTHER";
 }
 
+async function processFeed(
+  parser: Parser,
+  source: string,
+  rssUrl: string
+) {
+  let inserted = 0;
+  let skipped = 0;
+  let ignored = 0;
+
+  const feed = await parser.parseURL(rssUrl);
+
+  for (const item of feed.items) {
+    const title = item.title || "";
+    const content = item.contentSnippet || "";
+    const combined = `${title} ${content}`.toLowerCase();
+
+    const matched = KEYWORDS.some(keyword =>
+      combined.includes(keyword)
+    );
+
+    if (!matched) {
+      ignored++;
+      continue;
+    }
+
+    const url = item.link || "";
+
+    const { data: existing } = await supabaseServer
+      .from("incoming_articles")
+      .select("id")
+      .eq("url", url)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      skipped++;
+      continue;
+    }
+
+    const topic = detectTopic(combined);
+
+    const { error } = await supabaseServer
+      .from("incoming_articles")
+      .insert({
+        source,
+        title,
+        content,
+        url,
+        topic,
+        published_at: item.pubDate || null,
+        status: "NEW"
+      });
+
+    if (!error) {
+      inserted++;
+    }
+  }
+
+  return {
+    inserted,
+    skipped,
+    ignored
+  };
+}
+
 export async function GET() {
   try {
     const parser = new Parser();
 
-    const feed = await parser.parseURL(
+    const bbc = await processFeed(
+      parser,
+      "BBC",
       "https://feeds.bbci.co.uk/news/world/rss.xml"
     );
 
-    let inserted = 0;
-    let skipped = 0;
-    let ignored = 0;
-
-    for (const item of feed.items) {
-      const title = item.title || "";
-      const content = item.contentSnippet || "";
-      const combined = `${title} ${content}`.toLowerCase();
-
-      const matched = KEYWORDS.some(keyword =>
-        combined.includes(keyword)
-      );
-
-      if (!matched) {
-        ignored++;
-        continue;
-      }
-
-      const url = item.link || "";
-
-      const { data: existing } = await supabaseServer
-        .from("incoming_articles")
-        .select("id")
-        .eq("url", url)
-        .limit(1);
-
-      if (existing && existing.length > 0) {
-        skipped++;
-        continue;
-      }
-
-      const topic = detectTopic(combined);
-
-      const { error } = await supabaseServer
-        .from("incoming_articles")
-        .insert({
-          source: "BBC",
-          title,
-          content,
-          url,
-          topic,
-          published_at: item.pubDate || null,
-          status: "NEW"
-        });
-
-      if (!error) {
-        inserted++;
-      }
-    }
+    const tass = await processFeed(
+      parser,
+      "TASS",
+      "https://tass.com/rss/v2.xml"
+    );
 
     return NextResponse.json({
       success: true,
-      inserted,
-      skipped,
-      ignored
+
+      bbc,
+
+      tass,
+
+      totals: {
+        inserted:
+          bbc.inserted + tass.inserted,
+
+        skipped:
+          bbc.skipped + tass.skipped,
+
+        ignored:
+          bbc.ignored + tass.ignored
+      }
     });
   } catch (err: any) {
     return NextResponse.json(
