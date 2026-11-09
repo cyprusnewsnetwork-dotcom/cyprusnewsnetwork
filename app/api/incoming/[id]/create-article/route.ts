@@ -23,127 +23,72 @@ export async function POST(
       );
     }
 
-    const prompt = `
-Μετέτρεψε την παρακάτω είδηση σε σύντομο ελληνικό δημοσιογραφικό άρθρο.
+    const draftTitle = incoming.title;
 
-ΤΙΤΛΟΣ:
-${incoming.title}
+    const draftContent = `
+According to information published by ${incoming.source}, developments have been reported regarding ${incoming.topic}.
 
-ΠΗΓΗ:
-${incoming.source}
-
-ΠΕΡΙΛΗΨΗ:
 ${incoming.content}
 
-Επέστρεψε μόνο:
+The report was collected and processed by CypRus News Network for editorial review.
 
-ΤΙΤΛΟΣ:
-[ελληνικός τίτλος]
+Source: ${incoming.source}
 
-ΑΡΘΡΟ:
-[ελληνικό άρθρο]
-`;
-
-    const response = await fetch(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          messages: [
-            {
-              role: "user",
-              content: prompt,
-            },
-          ],
-        }),
-      }
-    );
-
-    const ai = await response.json();
-
-    if (!ai?.choices?.length) {
-      return NextResponse.json(
-        {
-          error: "OpenAI returned no content",
-          details: ai,
-        },
-        {
-          status: 500,
-        }
-      );
-    }
-
-    const generated =
-      ai.choices[0].message.content || "";
-
-    let titleGR = incoming.title;
-    let contentGR = generated;
-
-    const articlePos =
-      generated.indexOf("ΑΡΘΡΟ:");
-
-    if (articlePos > -1) {
-      titleGR = generated
-        .replace("ΤΙΤΛΟΣ:", "")
-        .substring(0, articlePos)
-        .trim();
-
-      contentGR = generated
-        .substring(articlePos + 7)
-        .trim();
-    }
+Original URL:
+${incoming.url}
+`.trim();
 
     const { data: article, error: articleError } =
       await supabaseServer
         .from("articles")
         .insert([
           {
-            title: incoming.title,
-            content: incoming.content,
+            title: draftTitle,
+            content: draftContent,
 
-            title_gr: titleGR,
-            content_gr: contentGR,
+            title_en: draftTitle,
+            content_en: draftContent,
 
             source: incoming.source,
             source_url: incoming.url,
             topic: incoming.topic,
 
-            status: "draft",
-          },
+            status: "draft"
+          }
         ])
         .select()
         .single();
 
     if (articleError) {
       return NextResponse.json(
-        { error: articleError.message },
-        { status: 500 }
+        {
+          error: articleError.message
+        },
+        {
+          status: 500
+        }
       );
     }
 
     await supabaseServer
       .from("incoming_articles")
       .update({
-        status: "CREATED",
+        status: "CREATED"
       })
       .eq("id", id);
 
     return NextResponse.json({
       success: true,
-      articleId: article.id,
+      articleId: article.id
     });
+
   } catch (err: any) {
     return NextResponse.json(
       {
-        error: err.message,
+        error: err.message
       },
       {
-        status: 500,
+        status: 500
       }
     );
   }
