@@ -10,51 +10,80 @@ export async function POST(
   try {
     const { id } = await params;
 
-    const { data: incoming, error: incomingError } =
-      await supabaseServer
-        .from("incoming_articles")
-        .select("*")
-        .eq("id", id)
-        .single();
+    const { data: incoming } = await supabaseServer
+      .from("incoming_articles")
+      .select("*")
+      .eq("id", id)
+      .single();
 
-    if (incomingError || !incoming) {
+    if (!incoming) {
       return NextResponse.json(
         { error: "Incoming article not found" },
         { status: 404 }
       );
     }
 
-    const draftContent = `
-Source: ${incoming.source}
+    const translationResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "system",
+              content:
+                "Μετέτρεψε την είδηση σε σύντομο δημοσιογραφικό άρθρο στα Ελληνικά. Επέστρεψε JSON με title_gr και content_gr."
+            },
+            {
+              role: "user",
+              content: `
+TITLE:
+${incoming.title}
 
-Topic: ${incoming.topic}
+SOURCE:
+${incoming.source}
 
-Original URL:
-${incoming.url}
-
-Summary:
-
+SUMMARY:
 ${incoming.content}
-    `.trim();
+`
+            }
+          ],
+          response_format: {
+            type: "json_object"
+          }
+        }),
+      }
+    );
+
+    const ai = await translationResponse.json();
+
+    const result = JSON.parse(
+      ai.choices[0].message.content
+    );
 
     const { data: article, error: articleError } =
       await supabaseServer
         .from("articles")
         .insert([
-  {
-    title: incoming.title,
-    content: draftContent,
+          {
+            title: incoming.title,
+            content: incoming.content,
 
-    title_gr: incoming.title,
-    content_gr: draftContent,
+            title_gr: result.title_gr,
+            content_gr: result.content_gr,
 
-    source: incoming.source,
-    source_url: incoming.url,
-    topic: incoming.topic,
+            source: incoming.source,
+            source_url: incoming.url,
+            topic: incoming.topic,
 
-    status: "draft"
-  },
-])
+            status: "draft",
+          },
+        ])
         .select()
         .single();
 
