@@ -23,7 +23,28 @@ export async function POST(
       );
     }
 
-    const translationResponse = await fetch(
+    const prompt = `
+Μετέτρεψε την παρακάτω είδηση σε σύντομο ελληνικό δημοσιογραφικό άρθρο.
+
+ΤΙΤΛΟΣ:
+${incoming.title}
+
+ΠΗΓΗ:
+${incoming.source}
+
+ΠΕΡΙΛΗΨΗ:
+${incoming.content}
+
+Επέστρεψε μόνο:
+
+ΤΙΤΛΟΣ:
+[ελληνικός τίτλος]
+
+ΑΡΘΡΟ:
+[ελληνικό άρθρο]
+`;
+
+    const response = await fetch(
       "https://api.openai.com/v1/chat/completions",
       {
         method: "POST",
@@ -35,36 +56,47 @@ export async function POST(
           model: "gpt-4o-mini",
           messages: [
             {
-              role: "system",
-              content:
-                "Μετέτρεψε την είδηση σε σύντομο δημοσιογραφικό άρθρο στα Ελληνικά. Επέστρεψε JSON με title_gr και content_gr."
-            },
-            {
               role: "user",
-              content: `
-TITLE:
-${incoming.title}
-
-SOURCE:
-${incoming.source}
-
-SUMMARY:
-${incoming.content}
-`
-            }
+              content: prompt,
+            },
           ],
-          response_format: {
-            type: "json_object"
-          }
         }),
       }
     );
 
-    const ai = await translationResponse.json();
+    const ai = await response.json();
 
-    const result = JSON.parse(
-      ai.choices[0].message.content
-    );
+    if (!ai?.choices?.length) {
+      return NextResponse.json(
+        {
+          error: "OpenAI returned no content",
+          details: ai,
+        },
+        {
+          status: 500,
+        }
+      );
+    }
+
+    const generated =
+      ai.choices[0].message.content || "";
+
+    let titleGR = incoming.title;
+    let contentGR = generated;
+
+    const articlePos =
+      generated.indexOf("ΑΡΘΡΟ:");
+
+    if (articlePos > -1) {
+      titleGR = generated
+        .replace("ΤΙΤΛΟΣ:", "")
+        .substring(0, articlePos)
+        .trim();
+
+      contentGR = generated
+        .substring(articlePos + 7)
+        .trim();
+    }
 
     const { data: article, error: articleError } =
       await supabaseServer
@@ -74,8 +106,8 @@ ${incoming.content}
             title: incoming.title,
             content: incoming.content,
 
-            title_gr: result.title_gr,
-            content_gr: result.content_gr,
+            title_gr: titleGR,
+            content_gr: contentGR,
 
             source: incoming.source,
             source_url: incoming.url,
@@ -107,8 +139,12 @@ ${incoming.content}
     });
   } catch (err: any) {
     return NextResponse.json(
-      { error: err.message },
-      { status: 500 }
+      {
+        error: err.message,
+      },
+      {
+        status: 500,
+      }
     );
   }
 }
