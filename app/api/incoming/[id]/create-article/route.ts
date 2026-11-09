@@ -41,15 +41,20 @@ ${incoming.content}
       await supabaseServer
         .from("articles")
         .insert([
-          {
-            title: incoming.title,
-            content: draftContent,
-            source: incoming.source,
-            source_url: incoming.url,
-            topic: incoming.topic,
-            status: "DRAFT"
-          },
-        ])
+  {
+    title: incoming.title,
+    content: draftContent,
+
+    title_gr: incoming.title,
+    content_gr: draftContent,
+
+    source: incoming.source,
+    source_url: incoming.url,
+    topic: incoming.topic,
+
+    status: "draft"
+  },
+])
         .select()
         .single();
 
