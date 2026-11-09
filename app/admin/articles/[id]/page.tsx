@@ -22,41 +22,40 @@ export default async function ArticleViewPage({
   return (
     <div className="max-w-3xl mx-auto py-10">
 
-      {/* BACK BUTTON */}
       <div className="mb-6 flex gap-3">
-        <a
-          href="/admin/articles"
-          className="px-4 py-2 rounded-full bg-gray-700 text-white text-sm hover:bg-gray-800 transition"
-        >
+        <a href="/admin/articles">
           ← Back to Articles
         </a>
 
-        {/* EDIT BUTTON */}
-        <a
-          href={`/admin/articles/${id}/edit`}
-          className="px-4 py-2 rounded-full bg-green-600 text-white text-sm hover:bg-green-700 transition"
-        >
+        <a href={`/admin/articles/${id}/edit`}>
           Edit
         </a>
 
-        {/* DELETE BUTTON */}
-        <a
-          href={`/admin/articles/${id}/delete`}
-          className="px-4 py-2 rounded-full bg-red-600 text-white text-sm hover:bg-red-700 transition"
-        >
+        <a href={`/admin/articles/${id}/delete`}>
           Delete
         </a>
       </div>
 
-      {/* TITLE */}
-      <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
+      <h1 className="text-3xl font-bold mb-4">
+        {article.title_gr || article.title}
+      </h1>
 
-      {/* STATUS */}
-      <p className="text-gray-600 mb-6">Status: {article.status}</p>
+      <p className="mb-4">
+        Status: {article.status}
+      </p>
 
-      {/* CONTENT */}
-      <h2 className="text-xl font-semibold mb-2">Content</h2>
-      <p className="mb-6">{article.content}</p>
+      <p className="mb-4">
+        Source: {article.source}
+      </p>
+
+      <p className="mb-6">
+        Topic: {article.topic}
+      </p>
+
+      <div className="whitespace-pre-wrap">
+        {article.content_gr || article.content}
+      </div>
+
     </div>
   );
 }
