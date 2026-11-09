@@ -24,13 +24,30 @@ export async function POST(
       );
     }
 
+    const draftContent = `
+Source: ${incoming.source}
+
+Topic: ${incoming.topic}
+
+Original URL:
+${incoming.url}
+
+Summary:
+
+${incoming.content}
+    `.trim();
+
     const { data: article, error: articleError } =
       await supabaseServer
         .from("articles")
         .insert([
           {
             title: incoming.title,
-            content: incoming.content,
+            content: draftContent,
+            source: incoming.source,
+            source_url: incoming.url,
+            topic: incoming.topic,
+            status: "DRAFT"
           },
         ])
         .select()
