@@ -3,6 +3,7 @@ import Parser from "rss-parser";
 import { supabaseServer } from "@/lib/supabaseServer";
 
 const KEYWORDS = [
+  // ENGLISH
   "ukraine",
   "ukrainian",
   "russia",
@@ -31,7 +32,22 @@ const KEYWORDS = [
   "energy",
   "gazprom",
   "sanctions",
-  "nato"
+  "nato",
+
+  // RUSSIAN
+  "путин",
+  "лавров",
+  "украина",
+  "украин",
+  "зеленский",
+  "россия",
+  "москва",
+  "кремль",
+  "санкции",
+  "нато",
+  "газ",
+  "нефть",
+  "энергетика"
 ];
 
 function detectTopic(text: string) {
@@ -41,7 +57,10 @@ function detectTopic(text: string) {
     t.includes("putin") ||
     t.includes("lavrov") ||
     t.includes("kremlin") ||
-    t.includes("moscow")
+    t.includes("moscow") ||
+    t.includes("путин") ||
+    t.includes("лавров") ||
+    t.includes("кремль")
   ) {
     return "PUTIN";
   }
@@ -50,7 +69,10 @@ function detectTopic(text: string) {
     t.includes("ukraine") ||
     t.includes("ukrainian") ||
     t.includes("zelensky") ||
-    t.includes("zelenskyy")
+    t.includes("zelenskyy") ||
+    t.includes("украина") ||
+    t.includes("украин") ||
+    t.includes("зеленский")
   ) {
     return "UKRAINE";
   }
@@ -66,7 +88,10 @@ function detectTopic(text: string) {
     t.includes("gas") ||
     t.includes("oil") ||
     t.includes("energy") ||
-    t.includes("gazprom")
+    t.includes("gazprom") ||
+    t.includes("газ") ||
+    t.includes("нефть") ||
+    t.includes("энергетика")
   ) {
     return "ENERGY";
   }
@@ -163,22 +188,34 @@ export async function GET() {
       "https://tass.com/rss/v2.xml"
     );
 
+    const tassRu = await processFeed(
+      parser,
+      "TASS_RU",
+      "https://tass.ru/rss/v2.xml"
+    );
+
     return NextResponse.json({
       success: true,
 
       bbc,
-
       tass,
+      tassRu,
 
       totals: {
         inserted:
-          bbc.inserted + tass.inserted,
+          bbc.inserted +
+          tass.inserted +
+          tassRu.inserted,
 
         skipped:
-          bbc.skipped + tass.skipped,
+          bbc.skipped +
+          tass.skipped +
+          tassRu.skipped,
 
         ignored:
-          bbc.ignored + tass.ignored
+          bbc.ignored +
+          tass.ignored +
+          tassRu.ignored
       }
     });
   } catch (err: any) {
