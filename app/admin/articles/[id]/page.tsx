@@ -20,7 +20,7 @@ export default async function ArticleViewPage({
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-10">
+    <div className="max-w-5xl mx-auto py-10">
 
       <div className="mb-6 flex gap-3">
         <a href="/admin/articles">
@@ -36,24 +36,32 @@ export default async function ArticleViewPage({
         </a>
       </div>
 
-      <h1 className="text-3xl font-bold mb-4">
-        {article.title_gr || article.title}
-      </h1>
+      <h2>Greek</h2>
 
-      <p className="mb-4">
-        Status: {article.status}
-      </p>
+      <h1>{article.title_gr}</h1>
 
-      <p className="mb-4">
-        Source: {article.source}
-      </p>
+      <div className="whitespace-pre-wrap mb-10">
+        {article.content_gr}
+      </div>
 
-      <p className="mb-6">
-        Topic: {article.topic}
-      </p>
+      <hr />
+
+      <h2>English</h2>
+
+      <h1>{article.title_en}</h1>
+
+      <div className="whitespace-pre-wrap mb-10">
+        {article.content_en}
+      </div>
+
+      <hr />
+
+      <h2>Russian</h2>
+
+      <h1>{article.title_ru}</h1>
 
       <div className="whitespace-pre-wrap">
-        {article.content_gr || article.content}
+        {article.content_ru}
       </div>
 
     </div>
