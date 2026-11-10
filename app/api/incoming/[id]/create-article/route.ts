@@ -26,11 +26,7 @@ export async function POST(
     const draftTitle = incoming.title;
 
     const draftContent = `
-According to information published by ${incoming.source}, developments have been reported regarding ${incoming.topic}.
-
 ${incoming.content}
-
-The report was collected and processed by CypRus News Network for editorial review.
 
 Source: ${incoming.source}
 
@@ -38,35 +34,36 @@ Original URL:
 ${incoming.url}
 `.trim();
 
+    const articleData: any = {
+      title: draftTitle,
+      content: draftContent,
+
+      source: incoming.source,
+      source_url: incoming.url,
+      topic: incoming.topic,
+
+      status: "draft"
+    };
+
+    if (incoming.source === "TASS_RU") {
+      articleData.title_ru = draftTitle;
+      articleData.content_ru = draftContent;
+    } else {
+      articleData.title_en = draftTitle;
+      articleData.content_en = draftContent;
+    }
+
     const { data: article, error: articleError } =
       await supabaseServer
         .from("articles")
-        .insert([
-          {
-            title: draftTitle,
-            content: draftContent,
-
-            title_en: draftTitle,
-            content_en: draftContent,
-
-            source: incoming.source,
-            source_url: incoming.url,
-            topic: incoming.topic,
-
-            status: "draft"
-          }
-        ])
+        .insert([articleData])
         .select()
         .single();
 
     if (articleError) {
       return NextResponse.json(
-        {
-          error: articleError.message
-        },
-        {
-          status: 500
-        }
+        { error: articleError.message },
+        { status: 500 }
       );
     }
 
@@ -81,7 +78,6 @@ ${incoming.url}
       success: true,
       articleId: article.id
     });
-
   } catch (err: any) {
     return NextResponse.json(
       {
