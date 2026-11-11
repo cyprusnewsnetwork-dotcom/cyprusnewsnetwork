@@ -1,32 +1,44 @@
 import { supabaseServer } from "@/lib/supabaseServer";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const supabase = supabaseServer;
+  try {
+    const supabase = supabaseServer;
 
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-  const formData = await req.formData();
+    const formData: any = await req.formData();
 
-  const title = formData.get("title");
-  const content = formData.get("content");
-  const language = formData.get("language");
-  const category = formData.get("category");
+    const title = formData.get("title");
+    const content = formData.get("content");
+    const language = formData.get("language");
+    const category = formData.get("category");
 
-  const { error } = await supabase
-    .from("articles")
-    .update({
-      title,
-      content,
-      language,
-      category,
-    })
-    .eq("id", id);
+    const { error } = await supabase
+      .from("articles")
+      .update({
+        title,
+        content,
+        language,
+        category,
+      })
+      .eq("id", id);
 
-  if (error) {
-    return new Response("Update failed", { status: 500 });
+    if (error) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.redirect(
+      new URL(`/admin/articles/${id}`, req.url)
+    );
+  } catch (err: any) {
+    return NextResponse.json(
+      { error: err.message },
+      { status: 500 }
+    );
   }
-
-  // 🔥 ABSOLUTE REDIRECT (διορθώνει το ERR_INVALID_URL)
-  return Response.redirect(new URL(`/admin/articles/${id}`, req.url));
 }

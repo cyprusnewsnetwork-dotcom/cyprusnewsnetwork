@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;">
+<head><script id='Cookiebot' src='https://consent.cookiebot.com/uc.js' data-cbid='604e0957-3178-47c9-8f51-85317d6ee1cf' data-blockingmode='auto' type='text/javascript'></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-11749931-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-11749931-1');
+    </script>
+
+    <script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function () {
+            googletag.defineSlot('/22704704512/Home_Page_970x90_(1)', [970, 90], 'div-gpt-ad-1648372290888-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_970x90_(2)', [970, 90], 'div-gpt-ad-1648372252951-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_970x90_(3)', [970, 90], 'div-gpt-ad-1648372211495-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_970x90_(4)', [970, 90], 'div-gpt-ad-1648372050356-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_970x90_(5)', [970, 90], 'div-gpt-ad-1648371937665-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_970x90_(6)', [970, 90], 'div-gpt-ad-1648371414035-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(1)', [300, 250], 'div-gpt-ad-1648375541458-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(2)', [300, 250], 'div-gpt-ad-1648377488001-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(3)', [300, 250], 'div-gpt-ad-1648380998021-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(4)', [300, 250], 'div-gpt-ad-1648389838537-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(5)', [300, 250], 'div-gpt-ad-1648385899170-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(6)', [300, 250], 'div-gpt-ad-1648386253341-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(7)', [300, 250], 'div-gpt-ad-1648386444543-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(8)', [300, 250], 'div-gpt-ad-1648388184439-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(9)', [300, 250], 'div-gpt-ad-1648388315024-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x250_(10)', [300, 250], 'div-gpt-ad-1648388461224-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(1)', [300, 50], 'div-gpt-ad-1648389767733-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(2)', [300, 50], 'div-gpt-ad-1648403466517-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(3)', [300, 50], 'div-gpt-ad-1648403605029-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(4)', [300, 50], 'div-gpt-ad-1648403730183-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(5)', [300, 50], 'div-gpt-ad-1648403880796-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(6)', [300, 50], 'div-gpt-ad-1648404282130-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Home_Page_300x50_(7)', [300, 50], 'div-gpt-ad-1648404758413-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_970x90_(1)', [970, 90], 'div-gpt-ad-1648405105710-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_970x90_(2)', [970, 90], 'div-gpt-ad-1648405213566-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_300x250_(1)', [300, 250], 'div-gpt-ad-1648445814863-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_300x250_(2)', [300, 250], 'div-gpt-ad-1648446228006-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_300x250_(3)', [300, 250], 'div-gpt-ad-1648446674696-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_300x50_(1)', [300, 50], 'div-gpt-ad-1648446842802-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Article_Page_300x250_(2)', [300, 250], 'div-gpt-ad-1648447233304-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/article_page_300x50_(3)', [300, 50], 'div-gpt-ad-1648447322654-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/category_page_970x90_(1)', [970, 90], 'div-gpt-ad-1648447681324-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/category_page_970x90_(2)', [970, 90], 'div-gpt-ad-1648447782573-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/category_page_300x250_(1)', [300, 250], 'div-gpt-ad-1648447890983-0').addService(googletag.pubads());
+            googletag.defineSlot('/22704704512/Category_Page_300x50_(1)', [300, 50], 'div-gpt-ad-1648447984594-0').addService(googletag.pubads());
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+        });
+    </script>
+    <link rel='shortcut icon' href='https://www.cna.org.cy/favicon.ico' />
+                      <script src='https://www.cna.org.cy/www/assets/scripts/vendor.min.js?v=07_05_25_1'></script><title>
+	ΚΥΠΕ
+</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><meta name="HandheldFriendly" content="true" /><meta name="theme-color" content="#4E5B31" /><link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:100,300,400,500,700&amp;subset=greek,greek-ext" rel="stylesheet" />
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<base href='https://www.cna.org.cy/' /><meta name='robots' content='index, follow'/>
+<meta name='generator' content='iBox Portal Builder 5 by Athens Technology Center (ATC - www.atc.gr)' />
+<meta property='og:title' content='ΚΥΠΕ'>
+                                     <meta property='og:description' content=''>
+                                     <meta property='og:url' content='https://www.cna.org.cy/'>
+<meta name='twitter:card' content='photo'>
+                                   <meta name='twitter:title' content='ΚΥΠΕ'>
+                                   <meta name='twitter:description' content=''>
+<link rel='canonical' href='https://www.cna.org.cy/' />
+
+	<!-- global css -->
+	<link href="/www/templates/auto_load/application.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/elephant-main.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/styles-main.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/bootstrap-daterangepicker/daterangepicker.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/bootstrap-multiselect/bootstrap-multiselect.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/fancybox/jquery.fancybox.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-4.7.0/css/font-awesome.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/all.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/all.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/brands.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/brands.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/font-awesome.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/fontawesome.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/regular.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/regular.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/solid.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/solid.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/svg-with-js.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/svg-with-js.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/v4-font-face.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/v4-font-face.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/v4-shims.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/v4-shims.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/v5-font-face.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/templates/auto_load/font-awesome-6.4.2/css/v5-font-face.min.css?v=07_05_25_1" rel="stylesheet"/>
+	
+	<!-- template css -->
+	<link href="/www/templates/default/default.css?v=07_05_25_1" rel="stylesheet"/>
+	
+	<!-- page gr css -->
+	<link href="/www/portlets/cna/gr/homeslice_2/homeslice_2.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeimagegallery/homeimagegallery.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homevideogallery/homevideogallery.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_6/homeslice_6.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/all/footer/footer.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_threecolumns/homeslice_threecolumns.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/ssp/header/header.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_7/homeslice_7.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_1_extra/homeslice_1_extra.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_3/homeslice_3.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_5/homeslice_5.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_8/homeslice_8.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/all/breakingnews/breakingnews.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/all/hometopfournews/hometopfournews.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/all/hometopfournews/pgwslider/pgwslider.min.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_1/homeslice_1.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/homeslice_4/homeslice_4.css?v=07_05_25_1" rel="stylesheet"/>
+	<link href="/www/portlets/cna/gr/kosmos_eidika_themata/kosmos_eidika_themata.css?v=07_05_25_1" rel="stylesheet"/>
+	
+	<script type="text/javascript">
+	    var _ibox_version = 5.00;
+	    var _ibox_RootUrl = 'https://www.cna.org.cy/';
+	    var _ibox_AdLangCode = 'LANG1';
+	    var _ibox_LangCode = 'LANG2';
+	    var _ibox_IsAd = false;
+	    var _ibox_MultiLang = false;
+	    var _ibox_CurrentPage = 'gr';
+	    var _ibox_AbsoluteCurrentPage = 'https://www.cna.org.cy/';
+	</script>
+	
+	<!-- global js -->
+	<script src="/www/templates/auto_load/bootstrap-grid-columns.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/flash_detect_min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/hammer.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/jquery.cookie.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/jquery.fancybox.pack.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/jquery.ui.totop.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/moment-with-locales.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/scripts.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/subscriptions.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/tools.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/translations.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/bootstrap-datepicker-locale/locales/bootstrap-datepicker.ar.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/bootstrap-datepicker-locale/locales/bootstrap-datepicker.el.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/bootstrap-datepicker-locale/locales/bootstrap-datepicker.en-gb.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/bootstrap-datepicker-locale/locales/bootstrap-datepicker.tr.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/bootstrap-daterangepicker/daterangepicker.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/bootstrap-multiselect/bootstrap-multiselect.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/all.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/all.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/brands.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/brands.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/conflict-detection.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/conflict-detection.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/fontawesome.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/fontawesome.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/regular.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/regular.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/solid.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/solid.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/v4-shims.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/font-awesome-6.4.2/js/v4-shims.min.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/select2-locale/i18n/ar.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/select2-locale/i18n/el.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/select2-locale/i18n/en.js?v=07_05_25_1"></script>
+	<script src="/www/templates/auto_load/select2-locale/i18n/tr.min.js?v=07_05_25_1"></script>
+	
+	<!-- template js -->
+	<script src="/www/templates/default/default.js?v=07_05_25_1"></script>
+	
+	<!-- page gr js -->
+	<script src="/global/portlets/htmlportlet/htmlportlet.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_2/homeslice_2.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeimagegallery/homeimagegallery.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homevideogallery/jwplayer.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_6/homeslice_6.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/all/footer/footer.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_threecolumns/homeslice_threecolumns.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/ssp/header/header.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_7/homeslice_7.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_1_extra/homeslice_1_extra.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_3/homeslice_3.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_5/homeslice_5.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_8/homeslice_8.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/all/breakingnews/breakingnews.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/all/breakingnews/aamirafridi_marquee/jquery.marquee.min.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/all/hometopfournews/hometopfournews.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/all/hometopfournews/pgwslider/pgwslider.min.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_1/homeslice_1.js?v=07_05_25_1"></script>
+	<script src="/www/portlets/cna/gr/homeslice_4/homeslice_4.js?v=07_05_25_1"></script>
+	<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
