@@ -6,44 +6,38 @@ import {
   Text,
   View,
 } from "react-native";
+import { createClient } from "@supabase/supabase-js";
 
-type Article = {
-  id: string;
-  title?: string;
-  title_en?: string;
-  title_ru?: string;
-  source?: string;
-  topic?: string;
-};
+const supabase = createClient(
+  process.env.EXPO_PUBLIC_SUPABASE_URL!,
+  process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default function App() {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<any[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function loadArticles() {
-      try {
-        const response = await fetch(
-          "https://cyprusnewsnetwork.vercel.app/api/articles"
-        );
-
-        const data = await response.json();
-
-        console.log("API DATA:", data);
-
-        if (Array.isArray(data)) {
-          setArticles(data);
-        } else {
-          setError("API did not return an array");
-        }
-      } catch (err) {
-        console.log(err);
-        setError("Unable to load articles");
-      }
-    }
-
     loadArticles();
   }, []);
+
+  async function loadArticles() {
+    try {
+      const { data, error } = await supabase
+        .from("articles")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      setArticles(data || []);
+    } catch (err: any) {
+      setError(err.message);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -75,7 +69,10 @@ export default function App() {
         )}
 
         {articles.map((article) => (
-          <View key={article.id} style={styles.card}>
+          <View
+            key={article.id}
+            style={styles.card}
+          >
             <Text style={styles.cardTitle}>
               {article.title_en ||
                 article.title_ru ||
@@ -138,7 +135,7 @@ const styles = StyleSheet.create({
   },
 
   counter: {
-    color: "#4ade80",
+    color: "#22c55e",
     marginBottom: 20,
   },
 
