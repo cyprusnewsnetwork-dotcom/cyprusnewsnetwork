@@ -185,22 +185,22 @@ export async function GET() {
     const tass = await processFeed(
       parser,
       "TASS",
-      "https://tass.com/rss/v2.xml"
+     "https://tass.com/rss/v2.xml"
     );
 
     const tassRu = await processFeed(
-      parser,
-      "TASS_RU",
-      "https://tass.ru/rss/v2.xml"
+     parser,
+     "TASS_RU",
+     "https://tass.ru/rss/v2.xml"
     );
-    
+
     try {
-  await fetch(
-    "https://cyprusnewsnetwork.vercel.app/api/process-incoming"
-  );
+         await fetch(
+     "https://cyprusnewsnetwork.vercel.app/api/process-incoming"
+    );
     } catch (err) {
-  console.error("Processor error:", err);
-  }
+     console.error("Processor error:", err);
+    }
 
     return NextResponse.json({
       success: true,
