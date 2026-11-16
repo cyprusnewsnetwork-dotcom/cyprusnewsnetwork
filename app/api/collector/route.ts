@@ -193,6 +193,9 @@ export async function GET() {
       "TASS_RU",
       "https://tass.ru/rss/v2.xml"
     );
+    await fetch(
+  `${process.env.NEXT_PUBLIC_SITE_URL}/api/process-incoming`
+    );
 
     return NextResponse.json({
       success: true,
