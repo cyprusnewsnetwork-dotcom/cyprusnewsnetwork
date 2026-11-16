@@ -193,9 +193,14 @@ export async function GET() {
       "TASS_RU",
       "https://tass.ru/rss/v2.xml"
     );
-    await fetch(
-  `${process.env.NEXT_PUBLIC_SITE_URL}/api/process-incoming`
-    );
+    
+    try {
+  await fetch(
+    "https://cyprusnewsnetwork.vercel.app/api/process-incoming"
+  );
+    } catch (err) {
+  console.error("Processor error:", err);
+  }
 
     return NextResponse.json({
       success: true,
