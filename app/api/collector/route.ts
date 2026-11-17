@@ -13,20 +13,59 @@ const KEYWORDS = [
   "lavrov",
   "zelensky",
   "zelenskyy",
+
   "trump",
   "donald trump",
+
   "us election",
   "us elections",
   "election",
   "white house",
+
   "republican",
   "democrat",
+
   "gas",
   "oil",
   "energy",
   "gazprom",
   "sanctions",
   "nato",
+
+  "greece",
+  "greek",
+  "cyprus",
+  "turkey",
+  "turkish",
+  "aegean",
+
+  "defence",
+  "defense",
+
+  "mitsotakis",
+  "dendias",
+  "christodoulides",
+
+  "μητσοτακης",
+  "μητσοτάκης",
+
+  "δενδιας",
+  "δένδιας",
+
+  "κυπρος",
+  "κύπρος",
+
+  "τουρκια",
+  "τουρκία",
+
+  "αιγαιο",
+  "αιγαίο",
+
+  "αμυνα",
+  "άμυνα",
+
+  "χριστοδουλιδης",
+  "χριστοδουλίδης",
 
   "путин",
   "лавров",
