@@ -3,30 +3,24 @@ import Parser from "rss-parser";
 import { supabaseServer } from "@/lib/supabaseServer";
 
 const KEYWORDS = [
-  // ENGLISH
   "ukraine",
   "ukrainian",
   "russia",
   "russian",
   "moscow",
   "kremlin",
-
   "putin",
   "lavrov",
   "zelensky",
   "zelenskyy",
-
   "trump",
   "donald trump",
-
   "us election",
   "us elections",
   "election",
   "white house",
-
   "republican",
   "democrat",
-
   "gas",
   "oil",
   "energy",
@@ -34,7 +28,6 @@ const KEYWORDS = [
   "sanctions",
   "nato",
 
-  // RUSSIAN
   "путин",
   "лавров",
   "украина",
@@ -122,9 +115,10 @@ async function processFeed(
   for (const item of feed.items) {
     const title = item.title || "";
     const content = item.contentSnippet || "";
+
     const combined = `${title} ${content}`.toLowerCase();
 
-    const matched = KEYWORDS.some(keyword =>
+    const matched = KEYWORDS.some((keyword) =>
       combined.includes(keyword)
     );
 
@@ -157,7 +151,7 @@ async function processFeed(
         url,
         topic,
         published_at: item.pubDate || null,
-        status: "NEW"
+        status: "NEW",
       });
 
     if (!error) {
@@ -168,7 +162,7 @@ async function processFeed(
   return {
     inserted,
     skipped,
-    ignored
+    ignored,
   };
 }
 
@@ -185,55 +179,51 @@ export async function GET() {
     const tass = await processFeed(
       parser,
       "TASS",
-     "https://tass.com/rss/v2.xml"
+      "https://tass.com/rss/v2.xml"
     );
 
     const tassRu = await processFeed(
-     parser,
-     "TASS_RU",
-     "https://tass.ru/rss/v2.xml"
+      parser,
+      "TASS_RU",
+      "https://tass.ru/rss/v2.xml"
     );
 
     try {
-         await fetch(
-     "https://cyprusnewsnetwork.vercel.app/api/process-incoming"
-    );
+      await fetch(
+        "https://cyprusnewsnetwork.vercel.app/api/process-incoming"
+      );
     } catch (err) {
-     console.error("Processor error:", err);
+      console.error("Processor error:", err);
     }
 
     return NextResponse.json({
       success: true,
-
       bbc,
       tass,
       tassRu,
-
       totals: {
         inserted:
           bbc.inserted +
           tass.inserted +
           tassRu.inserted,
-
         skipped:
           bbc.skipped +
           tass.skipped +
           tassRu.skipped,
-
         ignored:
           bbc.ignored +
           tass.ignored +
-          tassRu.ignored
-      }
+          tassRu.ignored,
+      },
     });
   } catch (err: any) {
     return NextResponse.json(
       {
         success: false,
-        error: err.message
+        error: err.message,
       },
       {
-        status: 500
+        status: 500,
       }
     );
   }
