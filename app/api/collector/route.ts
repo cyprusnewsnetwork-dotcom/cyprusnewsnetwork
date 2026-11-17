@@ -188,6 +188,12 @@ export async function GET() {
       "https://tass.ru/rss/v2.xml"
     );
 
+    const euronewsGr = await processFeed(
+      parser,
+      "EURONEWS_GR",
+      "https://gr.euronews.com/rss"
+    );
+
     try {
       await fetch(
         "https://cyprusnewsnetwork.vercel.app/api/process-incoming"
@@ -198,22 +204,30 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
+
       bbc,
       tass,
       tassRu,
+      euronewsGr,
+
       totals: {
         inserted:
           bbc.inserted +
           tass.inserted +
-          tassRu.inserted,
+          tassRu.inserted +
+          euronewsGr.inserted,
+
         skipped:
           bbc.skipped +
           tass.skipped +
-          tassRu.skipped,
+          tassRu.skipped +
+          euronewsGr.skipped,
+
         ignored:
           bbc.ignored +
           tass.ignored +
-          tassRu.ignored,
+          tassRu.ignored +
+          euronewsGr.ignored,
       },
     });
   } catch (err: any) {
