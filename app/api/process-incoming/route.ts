@@ -23,7 +23,10 @@ export async function GET() {
       let fullContent = "";
 
       try {
-        fullContent = await scrapeArticle(item.url);
+        fullContent = await scrapeArticle(
+          item.url,
+          item.source
+        );
       } catch (e) {
         console.error(e);
       }

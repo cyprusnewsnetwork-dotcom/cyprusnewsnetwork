@@ -1,6 +1,9 @@
 import * as cheerio from "cheerio";
 
-export async function scrapeArticle(url: string) {
+export async function scrapeArticle(
+  url: string,
+  source?: string
+) {
   try {
     const response = await fetch(url, {
       headers: {
@@ -9,22 +12,33 @@ export async function scrapeArticle(url: string) {
     });
 
     const html = await response.text();
-
     const $ = cheerio.load(html);
 
     let content = "";
 
-    $("p").each((_, el) => {
-      const text = $(el).text().trim();
+    if (source === "BBC") {
+      $('[data-testid="rich-text"] p').each(
+        (_, el) => {
+          const text = $(el).text().trim();
 
-      if (text.length > 40) {
-        content += text + "\n\n";
-      }
-    });
+          if (text.length > 30) {
+            content += text + "\n\n";
+          }
+        }
+      );
+    } else {
+      $("p").each((_, el) => {
+        const text = $(el).text().trim();
+
+        if (text.length > 40) {
+          content += text + "\n\n";
+        }
+      });
+    }
 
     return content.trim();
   } catch (err) {
-    console.error("SCRAPER ERROR:", err);
+    console.error(err);
     return "";
   }
 }
