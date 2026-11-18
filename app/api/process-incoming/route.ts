@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseServer } from "@/lib/supabaseServer";
+import { scrapeArticle } from "@/lib/scrapeArticle";
 
 export async function GET() {
   try {
@@ -19,14 +20,18 @@ export async function GET() {
     let processed = 0;
 
     for (const item of incoming || []) {
-      const draftContent = `
-${item.content}
+      let fullContent = "";
 
-Source: ${item.source}
+      try {
+        fullContent = await scrapeArticle(item.url);
+      } catch (e) {
+        console.error(e);
+      }
 
-Original URL:
-${item.url}
-`.trim();
+      const draftContent =
+        fullContent && fullContent.length > 500
+          ? fullContent
+          : item.content;
 
       const articleData: any = {
         title: item.title,
@@ -66,8 +71,12 @@ ${item.url}
     });
   } catch (err: any) {
     return NextResponse.json(
-      { error: err.message },
-      { status: 500 }
+      {
+        error: err.message,
+      },
+      {
+        status: 500,
+      }
     );
   }
 }
