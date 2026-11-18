@@ -27,6 +27,12 @@ export async function GET() {
           item.url,
           item.source
         );
+        console.log(
+      "SOURCE:",
+       item.source,
+      "LENGTH:",
+       fullContent.length
+       );
       } catch (e) {
         console.error(e);
       }
