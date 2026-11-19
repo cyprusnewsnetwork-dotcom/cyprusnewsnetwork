@@ -35,6 +35,10 @@ export async function scrapeArticle(
         }
       });
     }
+    console.log(
+        "SCRAPED LENGTH:",
+        content.length
+    );
 
     return content.trim();
   } catch (err) {
