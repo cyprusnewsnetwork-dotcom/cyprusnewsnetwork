@@ -28,11 +28,9 @@ export async function GET() {
           item.source
         );
         console.log(
-      "SOURCE:",
-       item.source,
-      "LENGTH:",
-       fullContent.length
-       );
+          "SOURCE=[" + item.source + "]",
+          "LENGTH=[" + fullContent.length + "]"
+        );
       } catch (e) {
         console.error(e);
       }
