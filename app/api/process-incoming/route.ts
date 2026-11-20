@@ -43,7 +43,11 @@ export async function GET() {
 
       const articleData: any = {
         title: item.title,
-        content: draftContent,
+        content: `
+      CRAPER_LENGTH=${fullContent.length}
+
+      ${fullContent}
+      `,
         source: item.source,
         source_url: item.url,
         topic: item.topic,
