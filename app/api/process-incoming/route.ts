@@ -35,10 +35,11 @@ export async function GET() {
         console.error(e);
       }
 
-      const draftContent =
-        fullContent && fullContent.length > 500
-          ? fullContent
-          : item.content;
+      const draftContent = `
+      FULL=${fullContent.length}
+
+       ${fullContent}
+       `;
 
       const articleData: any = {
         title: item.title,
